@@ -1,5 +1,5 @@
 import dotenv from 'dotenv'
-dotenv.config({ path: './app/server/.env' })
+dotenv.config()
 import supabase from './src/config/supabase.js'
 import express from 'express';
 const app = express();
