@@ -10,20 +10,20 @@
 
 **Checklist:**
 
-- [ ] Create root folder `church-counter/`
-- [ ] Initialise `server/`:
-  - [ ] `npm init -y`
-  - [ ] Install: express, cors, dotenv, socket.io, @supabase/supabase-js, csv-stringify, typescript, ts-node, nodemon
-- [ ] Initialise `client/`:
-  - [ ] `npm create vite@latest client -- --template react-ts`
-- [ ] Install client deps:
-  - [ ] tailwindcss, socket.io-client, axios
-- [ ] Set up `tsconfig.json` for server
-- [ ] Create folders:
-  - [ ] controllers/, routes/, services/, sockets/, middleware/, config/
-- [ ] Create placeholder files for all modules
-- [ ] Create `.env` with placeholder keys
-- [ ] Add `/health` route
+- [x] Create root folder `church-counter/`
+- [x] Initialise `server/`:
+  - [x] `npm init -y`
+  - [x] Install: express, cors, dotenv, socket.io, @supabase/supabase-js, csv-stringify, typescript, ts-node, nodemon
+- [x] Initialise `client/`:
+  - [x] `npm create vite@latest client -- --template react-ts`
+- [x] Install client deps:
+  - [x] tailwindcss, socket.io-client, axios
+- [x] Set up `tsconfig.json` for server
+- [x] Create folders:
+  - [x] controllers/, routes/, services/, sockets/, middleware/, config/
+- [x] Create placeholder files for all modules
+- [x] Create `.env` with placeholder keys
+- [x] Add `/health` route
 
 **Definition of Done:**
 
