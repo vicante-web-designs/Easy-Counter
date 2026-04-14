@@ -5,7 +5,16 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-        "forceConsistentCasingInFileNames": true,
-        "strict": true
-    }
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
 }
