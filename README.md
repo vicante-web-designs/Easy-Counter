@@ -18,7 +18,6 @@ A local-network web application that allows churches to count and track service 
 - [Local Network Setup](#local-network-setup)
 - [Usage Guide](#usage-guide)
 - [CSV Export](#csv-export)
-- [Roadmap](#roadmap)
 - [Contributing](#contributing)
 
 ---
@@ -340,33 +339,6 @@ The exported file includes the following columns:
 |---------|-----|-------|----------|-------|--------------|
 
 The file is named automatically based on the service name and date.
-
----
-
-## Roadmap
-
-### Version 1 — Local Network MVP
-
-- [x] Project setup and architecture
-- [ ] Supabase database and schema
-- [ ] Sections API
-- [ ] Services API
-- [ ] Attendance submission API
-- [ ] WebSocket real-time updates
-- [ ] CSV export
-- [ ] Counter mobile UI
-- [ ] Admin dashboard with live totals
-- [ ] Local network deployment guide
-
-### Version 2 — Cloud & Multi-Church
-
-- [ ] Cloud hosting (Railway or Render)
-- [ ] Admin authentication (per church login)
-- [ ] Multi-church support with isolated data
-- [ ] Edit and delete submissions
-- [ ] Advanced reporting
-- [ ] Export by date range
-- [ ] Role-based access control
 
 ---
 
