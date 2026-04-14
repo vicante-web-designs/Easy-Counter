@@ -12,6 +12,6 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "include": ["server.ts", "src/**/*.ts"],
+  "include": ["server.ts"],
   "exclude": ["node_modules", "dist"]
 }
