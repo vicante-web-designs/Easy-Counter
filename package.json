@@ -1,8 +1,19 @@
 {
     "name": "easycounter",
     "private": true,
+    "scripts": {
+        "server": "nodemon",
+        "client": "npm run dev --prefix app/client",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
     "workspaces": [
         "apps/*",
         "packages/*"
-    ]
+    ],
+    "devDependencies": {
+        "concurrently": "^9.2.1",
+        "nodemon": "^3.1.14",
+        "ts-node": "^10.9.2",
+        "typescript": "^6.0.2"
+    }
 }
