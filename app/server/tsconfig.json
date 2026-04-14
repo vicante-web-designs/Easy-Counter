@@ -9,9 +9,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "allowImportingTsExtensions": true,
-    "noEmit": true
   },
-  "include": ["server.ts"],
+  "include": ["server.ts", "src/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

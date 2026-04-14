@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 dotenv.config({ path: './app/server/.env' })
-import supabase from './src/config/supabase.ts'
+import supabase from './src/config/supabase.js'
 import express from 'express';
 const app = express();
 const PORT = process.env.PORT || 5000
