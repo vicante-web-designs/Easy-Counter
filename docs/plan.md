@@ -38,16 +38,15 @@
 
 **Checklist:**
 
-- [ ] Create Supabase project
-- [ ] Create tables:
-  - [ ] services
-  - [ ] sections
-  - [ ] attendance_submissions
-- [ ] Add foreign keys + constraints
-- [ ] Create `supabase.ts` config
-- [ ] Add env keys
-- [ ] Test connection
-- [ ] Seed 2 sections
+- [x] Create Supabase project
+- [x] Create tables:
+  - [x] services
+  - [x] sections
+  - [x] Add foreign keys + constraints
+- [x] Create `supabase.ts` config
+- [x] Add env keys
+- [x] Test connection
+- [x] Seed 2 sections
 
 **Definition of Done:**
 
