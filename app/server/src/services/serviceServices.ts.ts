@@ -1,7 +1,8 @@
 import supabase from '../config/supabase.js';
+import { ServiceType } from '../types/serviceType.js';
 
 // Create Service
-export async function createService(serviceData) {
+export async function createService(serviceData: ServiceType) {
     return await supabase.from("services").insert(serviceData).select()
 }
 
