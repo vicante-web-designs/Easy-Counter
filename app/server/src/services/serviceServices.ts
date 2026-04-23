@@ -32,4 +32,4 @@ export async function removeService(service_id: string) {
     const { data, error } = await supabase.from("services").delete().eq("id", service_id).select().single()
 
     if(error) throw error
-}
+} // work
