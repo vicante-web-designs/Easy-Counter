@@ -28,7 +28,7 @@ export async function updateService(service_id: string, updates: object) {
 }
 
 // Delete Service
-export async function removeService(service_id: string) {
+export async function deleteService(service_id: string) {
     const { data, error } = await supabase.from("services").delete().eq("id", service_id).select().single()
 
     if(error) throw error
