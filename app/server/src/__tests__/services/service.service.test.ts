@@ -1,7 +1,14 @@
-jest.mock('../../config/supabase.ts')
+/// <reference types="jest" />
 
-import supabase from '../../config/supabase.js';
-import { createService, getAllServices, getOneService, updateService, deleteService } from '../../services/service.service.js';
+jest.mock('../../config/supabase', () => ({
+  __esModule: true,
+  default: {
+    from: jest.fn()
+  }
+}))
+
+import supabase from '../../config/supabase';
+import { createService, getAllServices, getOneService, updateService, deleteService } from '../../services/service.service';
 
 
 const mockSupabase = supabase as any
@@ -20,7 +27,7 @@ describe('ServiceData Service', () => {
         mockSupabase.from = jest.fn().mockReturnValue({
             select: jest.fn().mockReturnValue({
                 order: jest.fn().mockResolvedValue({
-                    date: mockServices,
+                    data: mockServices,
                     error: null
                 })
             })
@@ -36,7 +43,7 @@ describe('ServiceData Service', () => {
         mockSupabase.from = jest.fn().mockReturnValue({
             select: jest.fn().mockReturnValue({
                 order: jest.fn().mockResolvedValue({
-                    date: null,
+                    data: null,
                     error: { message: "Something went wrong" }
                 })
             })
