@@ -8,7 +8,9 @@ export async function createService(serviceData: ServiceType) {
 
 // Get All Services
 export async function getAllServices() {
-    const {data, error} = await supabase.from("services").select('*')
+    const {data, error} = await supabase.from("services").select('*').order("date", { ascending: false })
+
+    if (error) throw new Error(error.message)
 
     return data
 }
@@ -17,7 +19,7 @@ export async function getAllServices() {
 export async function getOneService(service_id: string) {
     const { data, error } = await supabase.from("services").select('*').eq("id", service_id).single()
 
-    if(error) throw error;
+    if(error) throw new Error(error.message);
 
     return data
 }
@@ -26,7 +28,7 @@ export async function getOneService(service_id: string) {
 export async function updateService(service_id: string, updatedService: object) {
     const { data, error } = await supabase.from("services").update(updatedService).eq("id", service_id).select().single()
 
-    if(error) throw error
+    if(error) throw new Error(error.message);
 
     return data
 }
@@ -35,7 +37,7 @@ export async function updateService(service_id: string, updatedService: object) 
 export async function deleteService(service_id: string) {
     const { data, error } = await supabase.from("services").delete().eq("id", service_id).select().single()
 
-    if(error) throw error
+    if(error) throw new Error(error.message);
 
     return data
 }
