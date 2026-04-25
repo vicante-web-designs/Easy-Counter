@@ -3,7 +3,11 @@ import { ServiceType } from '../types/service.type.js';
 
 // Create Service
 export async function createService(serviceData: ServiceType) {
-    return await supabase.from("services").insert(serviceData).select()
+    const { data, error } = await supabase.from("services").insert(serviceData).select()
+
+    if (error) throw new Error(error.message)
+
+    return data
 }
 
 // Get All Services
