@@ -18,13 +18,17 @@ export async function getOneService(service_id: string) {
     const { data, error } = await supabase.from("services").select('*').eq("id", service_id).single()
 
     if(error) throw error;
+
+    return data
 }
 
-// Edit Service
-export async function updateService(service_id: string, updates: object) {
-    const { data, error } = await supabase.from("services").update(updates).eq("id", service_id).select().single()
+// Update Service
+export async function updateService(service_id: string, update: object) {
+    const { data, error } = await supabase.from("services").update(update).eq("id", service_id).select().single()
 
     if(error) throw error
+
+    return data
 }
 
 // Delete Service
@@ -32,4 +36,6 @@ export async function deleteService(service_id: string) {
     const { data, error } = await supabase.from("services").delete().eq("id", service_id).select().single()
 
     if(error) throw error
-} // work
+
+    return data
+}
