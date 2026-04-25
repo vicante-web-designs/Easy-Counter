@@ -23,8 +23,8 @@ export async function getOneService(service_id: string) {
 }
 
 // Update Service
-export async function updateService(service_id: string, update: object) {
-    const { data, error } = await supabase.from("services").update(update).eq("id", service_id).select().single()
+export async function updateService(service_id: string, updatedService: object) {
+    const { data, error } = await supabase.from("services").update(updatedService).eq("id", service_id).select().single()
 
     if(error) throw error
 

@@ -25,8 +25,8 @@ export const getOneSection = async (section_id: string) => {
 }
 
 // Update Section
-export const updateSection = async (section_id: string, update: Object) => {
-  const { data, error } = await supabase.from("sections").update(update).eq("id", section_id).select().single()
+export const updateSection = async (section_id: string, updatedSection: Object) => {
+  const { data, error } = await supabase.from("sections").update(updatedSection).eq("id", section_id).select().single()
 
   if(error) throw error
 
