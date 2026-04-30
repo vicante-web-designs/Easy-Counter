@@ -61,12 +61,12 @@
 **Checklist:**
 
 - [x] Build controller
-- [ ] Build routes
-- [ ] Register router
-- [ ] Test:
-  - [ ] GET /api/sections
-  - [ ] POST /api/sections
-  - [ ] DELETE /api/sections/:id
+- [x] Build routes
+- [x] Register router
+- [x] Test:
+  - [x] GET /api/sections
+  - [x] POST /api/sections
+  - [x] DELETE /api/sections/:id
 
 **Definition of Done:**
 
@@ -80,14 +80,14 @@
 
 **Checklist:**
 
-- [ ] Build controller + routes
-- [ ] Implement:
-  - [ ] Only ONE active service
-- [ ] Test:
-  - [ ] GET all
-  - [ ] GET by id
-  - [ ] POST
-  - [ ] PATCH activate
+- [x] Build controller + routes
+- [x] Implement:
+  - [x] Only ONE active service
+- [x] Test:
+  - [x] GET all
+  - [x] GET by id
+  - [x] POST
+  - [] PATCH activate
 
 **Definition of Done:**
 
@@ -101,10 +101,10 @@
 
 **Checklist:**
 
-- [ ] POST submission
-- [ ] GET submissions
-- [ ] GET totals
-- [ ] Add validation middleware
+- [x] POST submission
+- [x] GET submissions
+- [x] GET totals
+- [x] Add validation middleware
 
 **Definition of Done:**
 
