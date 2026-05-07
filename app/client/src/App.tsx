@@ -1,20 +1,11 @@
 import './App.css'
+import HomePage from './pages/HomePage'
 
 function App() {
 
   return (
     <>
-      <h1 className='text-5xl text-center font-bold'>
-        LFC Easy Counter
-      </h1>
-
-      <h2>
-        Choose your job
-      </h2>
-
-      <div>
-        
-      </div>
+      <HomePage />
     </>
   )
 }
