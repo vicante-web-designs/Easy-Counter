@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Socket Test</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        #log { margin-top: 20px; }
+        .event { background: #f0f0f0; padding: 10px; margin: 5px 0; border-radius: 4px; }
+        .connected { color: green; }
+        .disconnected { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Socket.io Test</h1>
+    <p id="status" class="disconnected">Disconnected</p>
+    <div id="log"></div>
+
+    <!-- Socket.io client is served automatically by your server -->
+    <script src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io('http://localhost:8000')
+        const log = document.getElementById('log')
+        const status = document.getElementById('status')
+
+        socket.on('connect', () => {
+            status.textContent = 'Connected ✓ — Socket ID: ' + socket.id
+            status.className = 'connected'
+        })
+
+        socket.on('disconnect', () => {
+            status.textContent = 'Disconnected'
+            status.className = 'disconnected'
+        })
+
+        socket.on('attendance:updated', (data) => {
+            const div = document.createElement('div')
+            div.className = 'event'
+            div.innerHTML = `
+                <strong>attendance:updated fired</strong><br>
+                <pre>${JSON.stringify(data, null, 2)}</pre>
+                <small>${new Date().toLocaleTimeString()}</small>
+            `
+            log.prepend(div)
+        })
+    </script>
+</body>
+</html>
