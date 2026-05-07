@@ -19,7 +19,7 @@ type FormValues = z.infer<typeof formSchema>
 
 const CountForm = () => {
 
-   const form = useForm<FormValues>({
+   const { register, handleSubmit, formState: { errors, isSubmitting }, setValue, control, reset } = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
         section: '',
@@ -29,6 +29,8 @@ const CountForm = () => {
         counterName: '',
         },
     })
+
+    const selectedSection = useWatch({control, name: 'section' })
 
 
     const onSubmit = (values: FormValues) => {
@@ -44,150 +46,51 @@ const CountForm = () => {
             </p>
         </article>
 
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-6">
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-6'>
 
-                {/* SECTION */}
-
-                <FormField
-                    control={form.control}
-                    name="section"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Your Section</FormLabel>
-
-                        <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                        >
-                        <FormControl>
-                            <SelectTrigger className="h-12">
-                            <SelectValue placeholder="Select your section" />
-                            </SelectTrigger>
-                        </FormControl>
-
-                        <SelectContent>
-                            <SelectItem value="main-hall">
-                            Main Hall
-                            </SelectItem>
-
-                            <SelectItem value="balcony">
-                            Balcony
-                            </SelectItem>
-
-                            <SelectItem value="children-wing">
-                            Children Wing
-                            </SelectItem>
-                        </SelectContent>
-                        </Select>
-
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-
-                {/* MEN */}
-
-                <FormField
-                    control={form.control}
-                    name="men"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Men</FormLabel>
-
-                        <FormControl>
-                        <Input
-                            type="number"
-                            min={0}
-                            className="h-12"
-                            {...field}
-                        />
-                        </FormControl>
-
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-
-                {/* WOMEN */}
-
-                <FormField
-                    control={form.control}
-                    name="women"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Women</FormLabel>
-
-                        <FormControl>
-                        <Input
-                            type="number"
-                            min={0}
-                            className="h-12"
-                            {...field}
-                        />
-                        </FormControl>
-
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-
-                {/* CHILDREN */}
-
-                <FormField
-                    control={form.control}
-                    name="children"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Children</FormLabel>
-
-                        <FormControl>
-                        <Input
-                            type="number"
-                            min={0}
-                            className="h-12"
-                            {...field}
-                        />
-                        </FormControl>
-
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-
-                {/* OPTIONAL COUNTER NAME */}
-
-                <FormField
-                    control={form.control}
-                    name="counterName"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>
-                        Counter Name (Optional)
-                        </FormLabel>
-
-                        <FormControl>
-                        <Input
-                            placeholder="e.g. John"
-                            className="h-12"
-                            {...field}
-                        />
-                        </FormControl>
-
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-
-                <Button
-                    type="submit"
-                    className="h-12 mt-4"
+            {/* SECTION */}
+            <Field>
+                <FieldLabel>Your Section</FieldLabel>
+                <Select
+                    onValueChange={(val) => setValue('section', val as 'For Sale' | 'For Rent')}
+                    value={selectedSection}
                 >
-                    Submit Count
-                </Button>
+                    <SelectTrigger className="h-12">
+                        <SelectValue placeholder="Select section" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="section-A">Section A</SelectItem>
+                        <SelectItem value="section-B">Section B</SelectItem>
+                    </SelectContent>
+                </Select>
+                <FieldError errors={[errors.section]} />
+            </Field>
 
-            </form>
-        </Form>
+            {/* MEN */}
+            <Field>
+                <FieldLabel>Men</FieldLabel>
+                <Input type="number" min={0} {...register('men', { valueAsNumber: true })} className='h-12' />
+                <FieldError errors={[errors.men]} />
+            </Field>
+
+            {/* WOMEN */}
+            <Field>
+                <FieldLabel>Women</FieldLabel>
+                <Input type="number" min={0} {...register('women', { valueAsNumber: true })} className='h-12' />
+                <FieldError errors={[errors.women]} />
+            </Field>
+
+            {/* CHILDREN */}
+            <Field>
+                <FieldLabel>Children</FieldLabel>
+                <Input type="number" min={0} {...register('children', { valueAsNumber: true })} className='h-12' />
+                <FieldError errors={[errors.children]} />
+            </Field>
+
+            <Button type='submit' className="h-12 mt-4">
+                Submit Count
+            </Button>
+        </form>
     </main>
   )
 }
