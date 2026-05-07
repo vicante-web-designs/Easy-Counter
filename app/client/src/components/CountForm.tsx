@@ -3,9 +3,9 @@ import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from './ui/button'
 import { Field, FieldLabel, FieldError } from './ui/form/field'
-import { Label } from './ui/form/label'
 import { Input } from './ui/form/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/form/select'
+import axios from 'axios'
 
 const formSchema = z.object({
     section: z.string().min(1, 'Section name is required'),
@@ -31,10 +31,15 @@ const CountForm = () => {
     })
 
     const selectedSection = useWatch({control, name: 'section' })
-
+    
+    const resetForm = () => {
+        reset()
+    }
 
     const onSubmit = (values: FormValues) => {
         console.log(values)
+
+        resetForm()
     }
 
   return (
@@ -86,6 +91,13 @@ const CountForm = () => {
                 <Input type="number" min={0} {...register('children', { valueAsNumber: true })} className='h-12' />
                 <FieldError errors={[errors.children]} />
             </Field>
+
+            <Field>
+                <FieldLabel>Counter Name</FieldLabel>
+                <Input placeholder="Input your name" {...register('counterName')} />
+                <FieldError errors={[errors.counterName]} />
+            </Field>
+
 
             <Button type='submit' className="h-12 mt-4">
                 Submit Count
