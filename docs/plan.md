@@ -117,10 +117,10 @@
 
 **Checklist:**
 
-- [ ] Build CSV service
-- [ ] Create export endpoint
+- [x] Build CSV service
+- [x] Create export endpoint
 - [ ] Create settings endpoints
-- [ ] Test CSV download
+- [x] Test CSV download
 
 **Definition of Done:**
 
@@ -135,9 +135,9 @@
 **Checklist:**
 
 - [x] Test all routes
-- [ ] Clean `.env`
-- [ ] Remove hardcoding
-- [ ] Fix weak points
+- [x] Clean `.env`
+- [x] Remove hardcoding
+- [x] Fix weak points
 
 **Definition of Done:**
 
