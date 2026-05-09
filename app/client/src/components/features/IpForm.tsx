@@ -67,7 +67,7 @@ const IpForm = ({ setIsConnected }: IPFormProps) => {
 
             <Button  type='submit' className="h-12 mt-4" disabled={isSubmitting}>
             {
-                isSubmitting ? 'Submitting IP Address...' : 'Submit IP address'
+                isSubmitting ? 'Connecting...' : 'Connect to Server'
             }
             </Button>
         </form>
