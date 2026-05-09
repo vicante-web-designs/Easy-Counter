@@ -3,7 +3,7 @@ import churchServiceRouter from './routes/churchService.routes.js'
 import churchAttendanceRouter from './routes/churchAttendance.routes.js'
 import churchSectionRouter from './routes/churchSection.routes.js'
 import csvExportRouter from './routes/csvExport.route.js'
-
+import localIPRouter from './routes/serverIP.route.js'
 const app = express();
 
 app.use((req, res, next) => {
@@ -13,6 +13,7 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 
+app.use('/api/network/ip', localIPRouter)
 app.use('/api/churchService', churchServiceRouter)
 app.use('/api/churchAttendance', churchAttendanceRouter)
 app.use('/api/churchSection', churchSectionRouter)
