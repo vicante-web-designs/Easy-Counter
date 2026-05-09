@@ -25,3 +25,10 @@ dist-ssr
 
 .env
 data/easycounter.db
+
+# Electron
+electron-dist/
+release/
+electron/main.js
+
+app/data/easycounter.db
