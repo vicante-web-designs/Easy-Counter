@@ -1,6 +1,7 @@
 import { api } from '@/lib/api'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import AdminDashboard from './AdminDashboard'
 
 const AdminPage = () => {
 
@@ -43,6 +44,8 @@ const AdminPage = () => {
           }
         </p>
       </section>
+
+      <AdminDashboard />
     </main>
   )
 }
