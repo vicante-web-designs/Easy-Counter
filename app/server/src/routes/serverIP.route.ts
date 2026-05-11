@@ -15,7 +15,7 @@ function getLocalIP() {
     return 'localhost'
 }
 
-router.get('/api/network/ip', (req, res) => {
+router.get('/ip', (req, res) => {
     res.json({ ip: getLocalIP(), port: 8000 })
 })
 
