@@ -7,7 +7,7 @@ import CounterPage from './pages/counter/CounterPage.tsx';
 import AdminPage from './pages/admin/AdminPage.tsx';
 import NotFoundPage from './pages/404/NotFoundPage.tsx';
 import CreateSectionPage from './pages/admin/forms/CreateSection.tsx';
-import CreateServicePage from './pages/admin/forms/createService.tsx';
+import CreateServicePage from './pages/admin/forms/CreateService.tsx';
 
 const router = createBrowserRouter([
   {
