@@ -7,11 +7,11 @@ export function createService(serviceData: ServiceType) {
     const id = uuidv4()
 
     const stmt = db.prepare(`
-            INSERT INTO services (id, name, date)
-            VALUES (?, ?, ?)
+            INSERT INTO services (id, name)
+            VALUES (?, ?)
         `)
 
-    stmt.run(id, serviceData.name, serviceData.date)
+    stmt.run(id, serviceData.name)
 
     return db.prepare('SELECT * FROM services WHERE id = ?').get(id)
 }
@@ -20,7 +20,7 @@ export function createService(serviceData: ServiceType) {
 export async function getAllServices() {
     return db.prepare(`
         SELECT * FROM services
-        ORDER BY date DESC
+        ORDER BY created_at DESC
     `).all()
 }
 
@@ -36,19 +36,18 @@ export async function getOneService(service_id: string) {
 }
 
 // Update Service
-export async function updateService(service_id: string, updatedService: {name?: string; date?: string }) {
+export async function updateService(service_id: string, updatedService: {name?: string }) {
     const existing = db.prepare('SELECT * FROM services WHERE id = ?').get(service_id)
     if (!existing) throw new Error('Service not found')
 
     const stmt = db.prepare(`
         UPDATE services
-        SET name = ?, date = ?
+        SET name = ?
         WHERE id = ?
     `)
 
     stmt.run(
         updatedService.name ?? (existing as any).name,
-        updatedService.date ?? (existing as any).date,
         service_id
     )
 
