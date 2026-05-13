@@ -169,10 +169,10 @@
 
 **Checklist:**
 
-- [ ] Setup Tailwind
-- [ ] Setup router
-- [ ] Create pages
-- [ ] Setup Axios
+- [x] Setup Tailwind
+- [x] Setup router
+- [x] Create pages
+- [x] Setup Axios
 - [ ] Configure proxy
 
 **Definition of Done:**
@@ -189,11 +189,11 @@
 
 - [ ] Define colors
 - [ ] Setup typography
-- [ ] Build base components:
-  - [ ] Button
-  - [ ] Card
-  - [ ] Input
-  - [ ] Badge
+- [x] Build base components:
+  - [x] Button
+  - [x] Card
+  - [x] Input
+  - [x] Badge
 - [ ] Create layout
 
 **Definition of Done:**
@@ -225,11 +225,11 @@
 
 **Checklist:**
 
-- [ ] POST request
-- [ ] Loading state
-- [ ] Success state
-- [ ] Error handling
-- [ ] Reset logic
+- [x] POST request
+- [x] Loading state
+- [x] Success state
+- [x] Error handling
+- [x] Reset logic
 
 **Definition of Done:**
 
@@ -259,7 +259,7 @@
 
 **Checklist:**
 
-- [ ] Use local IP
+- [x] Use local IP
 - [ ] Test on phone
 - [ ] Submit multiple entries
 
