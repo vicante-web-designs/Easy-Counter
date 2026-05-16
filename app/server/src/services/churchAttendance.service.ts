@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 // Create Attendance
 export function createChurchAttendance(attendanceData: {
     section_id: string
+    service_id: string
     men: number
     women: number
     children: number
@@ -12,11 +13,12 @@ export function createChurchAttendance(attendanceData: {
     const id = uuidv4()
 
     db.prepare(`
-        INSERT INTO attendance (id, section_id, men, women, children, counter_name)
-        VALUES (?, ?, ?, ?, ?, ?)
+        INSERT INTO attendance (id, section_id, service_id, men, women, children, counter_name)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
     `).run(
         id,
         attendanceData.section_id,
+        attendanceData.service_id,
         attendanceData.men,
         attendanceData.women,
         attendanceData.children,

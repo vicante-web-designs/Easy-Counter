@@ -2,14 +2,15 @@ import { Request, Response } from 'express';
 import { createChurchAttendance, getAllChurchAttendance, getOneChurchAttendance, updateChurchAttendance, deleteChurchAttendance } from '../services/churchAttendance.service.js';
 import { getIO } from '../sockets/socket.js';
 import { getSectionIdByName } from '../services/churchSection.service.js';
+import { getActiveService } from '../services/churchService.service.js';
 
 // Handle Create Church Attendance
 export const handleCreateChurchAttendance = async (req: Request, res: Response) => {
   try {
-    const { section_name, men, women, children, counter_name } = req.body
+    const { service_id, section_name, men, women, children, counter_name } = req.body
 
     // Find Section ID first
-    const section_id = await getSectionIdByName(section_name)
+    const section_id = getSectionIdByName(section_name)
 
     if (!section_id) {
       return res.status(404).json({
@@ -19,6 +20,7 @@ export const handleCreateChurchAttendance = async (req: Request, res: Response) 
 
     const churchAttendanceData = {
       section_id, 
+      service_id,
       men,
       women,
       children,

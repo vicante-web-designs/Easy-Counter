@@ -6,6 +6,7 @@ import { Field, FieldLabel, FieldError } from '../ui/form/field'
 import { Input } from '../ui/form/input'
 import axios from 'axios'
 import { api } from '@/lib/api'
+import { useActiveService } from '@/hooks/useActiveService'
 
 const formSchema = z.object({
     section: z.string().min(1, 'Section name is required'),
@@ -18,6 +19,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>
 
 const AttendanceForm = () => {
+   const { activeService } = useActiveService()
 
    const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<FormValues>({
         resolver: zodResolver(formSchema),
@@ -36,7 +38,14 @@ const AttendanceForm = () => {
 
     const onSubmit = async (values: FormValues) => {
         try {
-            const response = await api.post('/api/churchAttendance', values)
+            const response = await api.post('/api/churchAttendance', {
+                service_id: activeService?.id,
+                section_name: values.section,
+                men: values.men,
+                women: values.women,
+                children: values.children,
+                counter_name: values.counterName
+            })
 
             console.log("Success:", response.data)
 
