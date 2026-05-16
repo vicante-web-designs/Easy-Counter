@@ -50,7 +50,7 @@ const ServiceDashboard = () => {
 
                     {
                         service.is_active ? (
-                            <Button onClick={} className='border px-4 py-2 bg-green-200 text-green-700 rounded-md'>
+                            <Button className='border px-4 py-2 bg-green-200 text-green-700 rounded-md'>
                                 Active
                             </Button>
                         ) : (
