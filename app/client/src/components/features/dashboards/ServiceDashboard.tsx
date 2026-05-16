@@ -15,8 +15,7 @@ const ServiceDashboard = () => {
     const navigate = useNavigate()
     const [serviceData, setServiceData] = useState<Service[]>([])
 
-    useEffect(() => {
-        const fetchSections = async () => {
+    const fetchServices = async () => {
             try {
                 const res = await api.get('/api/churchService')
 
@@ -34,30 +33,65 @@ const ServiceDashboard = () => {
                   }
         }
 
-        fetchSections()
+    const toggleActivation = async(service_id: string) => {
+        try {
+
+            const res = await api.put(`/api/churchService/toggleActivation/${service_id}`)
+
+            console.log(res.data)
+
+            fetchServices()
+            
+        } catch (error) {
+            if(axios.isAxiosError(error)){
+                        alert(
+                            error?.response?.data?.message ||
+                            "Something went wrong"
+                        )
+                    } else {
+                        alert('Something went wrong')
+                    }
+                }
+        }
+
+    useEffect(() => {
+        const loadServices = async () => {
+
+            const res = await api.get('/api/churchService')
+
+            setServiceData(res.data)
+
+        }
+
+        loadServices()
     }, [])
 
-    console.log(serviceData)
   return (
     <section className='w-[70%] flex flex-col items-center gap-8 border p-2 rounded-md'>
       <h2 className='text-xl font-bold'>Services</h2>
 
       <div className='w-full flex flex-col gap-2'>
         {
-            serviceData.map(service => (
-                <div className='flex justify-between items-center border p-2 rounded-md'>
+            serviceData.map((service) => (
+                <div key={service.id} className={`flex justify-between items-center border p-2 rounded-md ${
+                    service.is_active ? (
+                        'border-green-200 bg-green-100'
+                    ) : (
+                        'border-red-200 bg-red-100'
+                    )
+                }`}>
                     <p>
                         {service.name}
                     </p>
 
                     {
                         service.is_active ? (
-                            <Button className='border px-4 py-2 bg-green-200 text-green-700 rounded-md'>
-                                Active
+                            <Button onClick={() => toggleActivation(service.id)} className='border px-4 py-2 bg-green-200 text-green-700 rounded-md'>
+                                De-activate
                             </Button>
                         ) : (
-                            <Button className='border px-4 py-2 bg-red-200 text-red-700 rounded-md'>
-                                Inactive
+                            <Button onClick={() => toggleActivation(service.id)} className='border px-4 py-2 rounded-md'>
+                                Activate
                             </Button>
                         )
                     }

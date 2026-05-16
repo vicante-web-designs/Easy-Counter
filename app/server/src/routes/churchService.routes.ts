@@ -13,6 +13,6 @@ router.put('/:service_id', handleUpdateService)
 
 router.delete('/:service_id', handleDeleteService)
 
-router.put('/:service_id', handleToggleServiceActivtion)
+router.put('/toggleActivation/:service_id', handleToggleServiceActivtion)
 
 export default router
