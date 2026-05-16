@@ -37,8 +37,7 @@ const SectionDashboard = () => {
 
         fetchSections()
     }, [])
-
-    console.log(sectionData)
+    
   return (
     <section className='w-[70%] flex flex-col items-center gap-8 border p-2 rounded-md'>
       <h2 className='text-xl font-bold'>Sections</h2>
