@@ -44,7 +44,7 @@ export const handleCreateChurchAttendance = async (req: Request, res: Response) 
 export const handleGetAllChurchAttendance = async (req: Request, res: Response) => {
   try {
 
-      const data = await getAllChurchAttendance()
+      const data = getAllChurchAttendance()
 
       return res.status(200).json(data)
 
@@ -61,7 +61,7 @@ export const handleGetOneChurchAttendance = async (req: Request, res: Response) 
 
       const { attendanceID } = req.params
       
-      const data = await getOneChurchAttendance(attendanceID as string)
+      const data = getOneChurchAttendance(attendanceID as string)
 
       return res.status(200).json(data)
 
@@ -98,7 +98,7 @@ export const handleDeleteChurchAttendance = async (req: Request, res: Response) 
 
       const { attendanceID } = req.params
 
-      await deleteChurchAttendance(attendanceID as string)
+      deleteChurchAttendance(attendanceID as string)
 
       getIO().emit('attendance:updated')
 
