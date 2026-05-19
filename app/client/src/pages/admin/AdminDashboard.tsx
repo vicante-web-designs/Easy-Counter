@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { socket } from '@/lib/socket'
 
 type SectionStats = {
+  id: string
   section_id: string
   section_name: string
   men: number
@@ -19,6 +20,11 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if(!activeService?.id) {
+        setData([])
+        return
+      }
+
       const res = await api.get(`/api/churchAttendance/service/${activeService?.id}`)
 
       setData(res.data)
@@ -79,7 +85,7 @@ const AdminDashboard = () => {
               data.map((section) => {
                   const total = section.men + section.women + section.children
                   return (
-                      <TableRow key={section.section_id}>
+                      <TableRow key={section.id}>
                           <TableCell>{section.counter_name ?? '—'}</TableCell>
                           <TableCell>{section.section_name}</TableCell>
                           <TableCell>{section.men}</TableCell>
