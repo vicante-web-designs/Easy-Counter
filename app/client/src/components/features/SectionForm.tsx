@@ -37,9 +37,9 @@ const SectionForm = ({ section_id }: SectionFormProps) => {
         try {
 
             if(isEditMode && existingSection){
-                const res = api.put(`/api/churchSection/${section_id}`, values)
+                const { data } = await api.put(`/api/churchSection/${section_id}`, values)
 
-                console.log("Section editted:", res)
+                console.log("Section editted:", data)
 
             } else {
                 const response = await api.post('/api/churchSection', values)
