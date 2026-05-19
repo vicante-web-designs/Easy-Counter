@@ -8,7 +8,3 @@ export interface Section {
 export interface SectionFormProps {
     section_id?: string
 }
-
-export interface deleteModalProps {
-    section_id?: string
-}

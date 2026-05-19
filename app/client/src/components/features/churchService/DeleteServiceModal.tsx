@@ -5,11 +5,11 @@ import type { deleteModalProps } from '@/types/deleteModalType'
 import axios from 'axios'
 import { Trash2Icon } from 'lucide-react'
 
-const DeleteSectionModal = ({ id }: deleteModalProps) => {
+const DeleteServiceModal = ({ id }: deleteModalProps) => {
 
     const handleDelete = async(id: string) => {
         try {
-            const { data } = await api.delete(`/api/churchSection/${id}`)
+            const { data } = await api.delete(`/api/churchService/${id}`)
 
             console.log(data)
         } catch (error) {
@@ -39,7 +39,7 @@ const DeleteSectionModal = ({ id }: deleteModalProps) => {
             <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
                 <AlertDialogAction onClick={() => handleDelete(id as string)}>
-                    Yes, Delete this Section
+                    Yes, Delete this Service
                 </AlertDialogAction>
             </AlertDialogFooter>
         </AlertDialogContent>
@@ -47,4 +47,4 @@ const DeleteSectionModal = ({ id }: deleteModalProps) => {
   )
 }
 
-export default DeleteSectionModal
+export default DeleteServiceModal
