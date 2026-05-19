@@ -8,7 +8,7 @@ import AdminPage from './pages/admin/AdminPage.tsx';
 import NotFoundPage from './pages/404/NotFoundPage.tsx';
 import CreateSectionPage from './pages/admin/forms/CreateSection.tsx';
 import CreateServicePage from './pages/admin/forms/CreateService.tsx';
-import EditSectionForm from './components/features/section/EditSectionForm.tsx';
+import EditSectionForm from './components/features/churchSection/EditSectionForm.tsx';
 
 const router = createBrowserRouter([
   {

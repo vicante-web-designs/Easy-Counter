@@ -4,7 +4,8 @@ import type { Section } from '@/types/sectionTypes'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
-import DeleteSectionModal from '../section/DeleteSection'
+import DeleteSectionModal from '../churchSection/DeleteSection'
+import { socket } from '@/lib/socket'
 
 const SectionDashboard = () => {
     const navigate = useNavigate()
@@ -31,6 +32,12 @@ const SectionDashboard = () => {
         }
 
         fetchSections()
+
+        socket.on('sections:updated', fetchSections)
+
+        return () => {
+            socket.off('sections:updated', fetchSections)
+        }
     }, [])
     
   return (

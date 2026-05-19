@@ -14,7 +14,7 @@ const DeleteSectionModal = ({ section_id }: deleteModalProps) => {
             console.log(data)
         } catch (error) {
             if(axios.isAxiosError(error)){
-                    console.error(error.message)
+                    console.log(error.response?.data.error)
                 } else {
                     alert('Something went wrong')
                 }

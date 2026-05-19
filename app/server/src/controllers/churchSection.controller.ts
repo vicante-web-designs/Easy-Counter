@@ -10,7 +10,7 @@ export const handleCreateChurchSection = async (req: Request, res: Response) => 
     
     const data = await createChurchSection(churchSectionData)
     
-    getIO().emit('sections:changed')
+    getIO().emit('sections:updated')
     
 
     return res.status(201).json(data)
@@ -72,7 +72,7 @@ export const handleUpdateChurchSection = async (req: Request, res: Response) => 
         
         const data = await updateChurchSection(sectionID as string, updatedChurchSectionData)
 
-        getIO().emit('sections:changed')
+        getIO().emit('sections:updated')
 
         return res.status(200).json(data)
 
@@ -94,7 +94,7 @@ export const handleDeleteChurchSection = async (req: Request, res: Response) => 
 
       deleteChurchSection(sectionID as string)
 
-      getIO().emit('sections:changed')
+      getIO().emit('sections:updated')
 
       return res.status(200).json({ message: 'Church Section deleted successfully' })
 
